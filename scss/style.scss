@@ -1,0 +1,262 @@
+/* style.scss */
+//Variables
+$color-fondo: #0a0a0a;
+$color-principal: #121212;
+$color-secundario: #1e1e1e;
+$color-acento: #00ffff;
+$color-error: #ff0000;
+$color-texto: #ffffff;
+$font-principal: 'Arial', sans-serif;
+
+
+/* Reset general */
+* {
+  margin: 5;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-principal;
+  background-color: $color-fondo; /* negro */
+  color: $color-texto;
+}
+
+/* HEADER */
+.header {
+  background-color: $color-principal;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+
+  &__logo img {
+    height: 60px;
+  }
+
+  &__nav {
+    .nav__list {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav__link { /*Link Botones banda superior*/
+      text-decoration: none;
+      color: $color-acento; /* verde agua */
+      font-weight: bold;
+
+
+      &:hover { /* Cambio de color */
+        color: $color-error; /* rojo */
+      }
+    }
+  }
+}
+
+/* SLIDER (estático por ahora) */
+.slider {
+  background-image: url('../img/slider-ejemplo.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+
+  /* SECCIONES */
+  &__contenido {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px 20px;
+    border-radius: 10px;
+  }
+
+  &__titulo {/* se cambia por BEM slider__titulo */
+    color: $color-acento; /* verde agua */
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  &__boton {
+  display: inline-block;
+  background-color: $color-error;
+  color: white;
+  text-decoration: none;
+  padding: 20px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+
+
+    &__boton:hover {
+      background-color: $color-acento;
+      color: #000;
+    }
+  }
+}
+
+.entrenadores__pilares {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.entrenadores__pilar {
+  flex: 1;
+  min-width: 250px;
+  background-color: $color-secundario;
+  padding: 20px;
+  border-left: 5px solid $color-error; /* rojo */
+}
+
+/* FOOTER */
+.footer {
+  background-color: $color-principal;
+  text-align: center;
+  padding: 20px;
+  color: #cccccc;
+  margin-top: 40px;
+
+
+  &__texto {
+    margin: 0;
+    font-size: 14px;
+    color: inherit;
+  }
+}
+
+.contacto__boton {
+  display: inline-block;
+  background-color: $color-error;
+  color: white;
+  text-decoration: none;
+  padding: 20px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+
+
+  &:hover {
+    background-color: $color-acento;
+    color: #000;
+  }
+}
+
+.galeria__imagenes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+  }
+}
+
+.carrusel {
+  position: relative;
+  max-width: 600px;
+  margin: 30px auto;
+  overflow: hidden;
+
+
+  &__contenedor {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+
+&__slide {
+min-width: 100%;
+display: none;
+border-radius: 10px;
+
+
+&.activo {
+display: block;
+}
+}
+
+&__boton {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+background-color: rgba(0, 0, 0, 0.5);
+color: white;
+border: none;
+font-size: 30px;
+padding: 8px 12px;
+cursor: pointer;
+z-index: 10;
+
+
+&--prev {
+left: 10px;
+}
+
+&--next {
+right: 10px;
+}
+
+&--hover {
+background-color: rgba(0, 0, 0, 0.8);
+}
+}
+}
+
+
+//Para responsividad
+@media (max-width: 768px) /*Pantallas menores a 768*/{
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .header__nav .nav__list {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  .slider {
+    height: 200px;
+    padding: 20px;
+  }
+
+  .slider__titulo {
+    font-size: 1.8rem;
+  }
+
+  .entrenadores__pilares {
+    flex-direction: column;
+  }
+
+  .carrusel {
+    max-width: 100%;
+  }
+
+  .galeria__imagenes {
+    grid-template-columns: 1fr;
+  }
+
+  .contacto__boton {
+    width: 100%;
+    text-align: center;
+  }
+
+}

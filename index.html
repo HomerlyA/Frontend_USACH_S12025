@@ -1,0 +1,113 @@
+<!--Esto es único y da la estructura general-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olmostri team</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<!--Header-->
+<header class="header"><!--Se cambia a BEM-->
+    <div class="header__logo">
+        <img src="/img/logo-olmostri.png.png" alt="Logo Olmostri team">
+    </div>
+    <nav class="header__nav">
+        <ul class="nav__list">
+            <li class="nav__item"><a class="nav__link" href="#">Inicio</a></li>
+            <li class="nav__item"><a class="nav__link" href="#">Nosotros</a></li>
+            <li class="nav__item"><a class="nav__link" href="#">Eventos</a></li>
+            <li class="nav__item"><a class="nav__link" href="#">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+<!--Slider--><!--Se cambia a BEM-->
+<section class="slider">
+<div class="slider__contenido">
+    <h1 class="slider__titulo">Pasión por el deporte</h1>
+    <a href="#contacto" class="slider__boton">¡Únete al equipo!</a>
+</div>
+</section>
+<!--Nosotros-->
+<section id="nosotros">
+<h2>¿Quiénes somos?</h2>
+<p>Olmostri es más que un equipo, es una comunidad que comparte la pasión por el triatlón. Entrenamos juntos, competimos juntos y crecemos juntos.</p>
+</section>
+
+<!--Entrenadores-->
+<section class="entrenadores">
+<h2 class="entrenadores__titulo">Entrenadores</h2>
+<div class="entrenadores__pilares">
+    <div class="entrenadores__pilar">
+        <h3 class="entrenadores__nombre"> Coach 1 - Anthony Olmos</h3>
+        <p class="entrenadores__descripcion">Especialista en entrenamiento de running y ciclismo de atletas de alto rendimiento</p>
+    </div>
+    <div class="entrenadores__pilar">
+        <h3 class="entrenadores__nombre">Coach 2 - Karla Urbina</h3>
+        <p class="entrenadores__descripcion">Atleta de alto rendimiento, campeona sudamericana</p>
+    </div>
+</div>
+</section>
+
+<!--Galeria-->
+<section class="galeria" id="galeria">
+<h2 class="galeria__titulo">Galería</h2>
+<p class="galeria__descrition">Fotos de nuestras competencias, entrenamientos y momentos inolvidables.</p>
+
+<div class="carrusel">
+<button class="carrusel__boton carrusel__boton--prev" onclick="moverCarrusel(-1)">&#10094;</button>
+
+<div class="carrusel__contenedor">
+  <img src="img/1.jpg" class="carrusel__slide carrusel__slide.activo" alt="Foto 1">
+  <img src="img/2.jpg" class="carrusel__slide" alt="Foto 2">
+  <img src="img/3.jpg" class="carrusel__slide" alt="Foto 3">
+  <img src="img/4.jpg" class="carrusel__slide" alt="Foto 4">
+  <img src="img/5.jpg" class="carrusel__slide" alt="Foto 5">
+</div>
+
+<button class="carrusel__boton carrusel__boton--next" onclick="moverCarrusel(1)">&#10095;</button>
+</div>
+</section>
+
+
+<!-- Contacto -->
+<section class="contacto" id="contacto">
+<h2 class="contacto__titulo">Contacto</h2>
+<p class="contacto__description">¿Te interesa unirte? Escríbenos y te contamos cómo hacerlo.</p>
+<a href="https://www.instagram.com/olmostri_teamrunning/" class="contacto__boton" target="_blank">Escribenos por Instagram</a>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+<p class="footer__texto">&copy; 2025 Olmostri Team. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+const slides = document.querySelectorAll('.carrusel__slide'); //Tambien se actualiza el JS por el slider BEM
+const botonprev = document.querySelector('.carrusel__boton--prev');
+const botonnext = document.querySelector('.carrusel__boton--next');
+let indiceActual = 0;
+
+function mostrarSlide(n) {
+slides.forEach(slide => slide.classList.remove('activo'));
+indiceActual = (n + slides.length) % slides.length; // Loop infinito
+slides[indiceActual].classList.add('activo');
+}
+
+botonprev.addEventListener('click', () => {
+  indiceActual = (indiceActual - 1 + slides.length) % slides.length;
+  mostrarSlide(indiceActual);
+});
+
+botonnext.addEventListener('click', () => {
+  indiceActual = (indiceActual + 1) % slides.length;
+  mostrarSlide(indiceActual);
+});
+
+// Se mostrará el primer slide al cargar
+mostrarSlide(indiceActual);
+</script>
+
+</body>
+</html>
